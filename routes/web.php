@@ -15,9 +15,6 @@ use App\Http\Controllers\homecontroller;
 
 
 Route::prefix('admin')->group(function () {
-  
         Route::get('/',[homecontroller::class,'index'])->name('dashboard');
-        
-    
 });
 
