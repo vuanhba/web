@@ -7,7 +7,20 @@
             <textarea class="form-control @error($inputName) is-invalid @enderror" name="{{ $inputName }}" id="editor">{{ isset($data) ? $data->$inputName : old($inputName) }}</textarea>
         @elseif ($inputTypes && $inputTypes[$index] === 'select')
             <select class="form-control" name="{{ $inputName }}" id="{{ $inputName }}">
-                <!-- insert options here -->
+                @php
+                    $uniqueCategories = [];
+                @endphp
+
+                @foreach ($product as $category)
+                    @if ($category->getCate() && !in_array($category->getCate()->id, $uniqueCategories))
+                        <option value="{{ $category->getCate()->id }}" {{ isset($category) && $category->getCate()->id == $category->id ? 'selected' : '' }}>
+                            {{ $category->getCate()->name }}
+                        </option>
+                        @php
+                            $uniqueCategories[] = $category->getCate()->id;
+                        @endphp
+                    @endif
+                @endforeach
             </select>
 
         @elseif ($inputTypes && $inputTypes[$index] === 'file')

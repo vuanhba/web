@@ -8,6 +8,8 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\URL;
 class ProductController extends Controller
 {
 
@@ -89,7 +91,8 @@ class ProductController extends Controller
 
     public function formAdd(Request $request)
     {
-        return view('page.backend.products.add');
+        $product = ProductsModel::all(); // Khởi tạo một đối tượng Product mới
+        return view('page.backend.products.add' , ['product' => $product]);
     }
 
     public function editProduct($id)
@@ -106,7 +109,7 @@ class ProductController extends Controller
             'data' => $data
         ]);
     }
-
+    
     public function updateProduct($id , request $request)
     {
         if(empty($id)) {
@@ -170,4 +173,39 @@ class ProductController extends Controller
         ProductsModel::where('id' , '=' , $id)->delete();
         return redirect()->to('admin/products/sanpham');
     }
+
+    public function filter_price($price)
+    {
+
+        $data = ProductsModel::where('price', '<=', $price)->get();
+
+    // Trả về JSON chứa HTML
+        return response()->json([
+            'message' => 'đã hoàn thành code xong',
+            'data' => $data
+        ]);
+    }
+
+    public function filter_cate($cate)
+    {
+        $data = ProductsModel::where('id_category', '=', $cate)->get();
+
+    // Trả về JSON chứa HTML
+        return response()->json([
+            'message' => 'đã hoàn thành code xong',
+            'data' => $data
+        ]);
+    }
+
+    public function filter_status($status)
+    {
+        $data = ProductsModel::where('status', '=', $status)->get();
+
+    // Trả về JSON chứa HTML
+        return response()->json([
+            'message' => 'đã hoàn thành code xong',
+            'data' => $data
+        ]);
+    }
+
 }

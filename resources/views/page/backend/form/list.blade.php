@@ -11,7 +11,7 @@
         </tr>
     </thead>
 
-    <tbody>
+    <tbody id="product-list-body">
         @foreach ($data as $index => $product)
         <tr>
             <td><input style="position: relative;" class="form-check-input" type="checkbox" value="" id="{{ $product->id }}" ref="{{ $product->id }}" ></td>
@@ -19,6 +19,8 @@
             @foreach ($list as $title)
                 @if($title === 'image')
                     <td><img width="200px" height="200px" src="{{ asset($product->image) }}" alt="Your Image"></td>
+                @elseif($title === 'id_category')
+                    <td>{{ $product->getCate()->name}}</td>
                 @else
                     <td>{!! $product->{$title} !!}</td>
                 @endif

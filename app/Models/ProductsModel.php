@@ -24,4 +24,10 @@ class ProductsModel extends Model
         'status' , 
         'id_category'
     ];
+
+    public function getCate()
+    {
+        $cate = CategoryModel::find($this->id_category);
+        return $cate;
+    }
 }
