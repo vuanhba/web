@@ -12,6 +12,14 @@ class Authenticate extends Middleware
      */
     protected function redirectTo(Request $request): ?string
     {
+        $currenMiddleware = $request->route()->middleware();
+        if(!empty($currenMiddleware)&& in_array('auth:account',$currenMiddleware)){
+            return route('home');
+        }
+        // if(!empty($currenMiddleware)&& in_array('auth',$currenMiddleware)){
+        //     return route('home');
+        // }
         return $request->expectsJson() ? null : route('login');
     }
 }
+
