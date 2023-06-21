@@ -7,8 +7,7 @@ use Illuminate\Http\Request;
 class homecontroller extends Controller
 {
     public function index(){
-        return view('page.backend.index');
-        
+        return view('page.backend.dashboarch'); 
     }
    
 }

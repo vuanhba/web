@@ -16,23 +16,16 @@
        
     @include('layout.backend.nav')
 
-        <!-- End of Sidebar -->
-
-        <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
-            <!-- Main Content -->
             <div id="content">
 
-                <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-                    <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    <!-- Topbar Search -->
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
@@ -140,7 +133,7 @@
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
+                                        <img class="rounded-circle" src="{{ asset('backend/img/undraw_profile_1.svg')}}"
                                             alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
@@ -152,7 +145,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_2.svg"
+                                        <img class="rounded-circle" src="{{ asset('backend/img/undraw_profile_2.svg')}}"
                                             alt="...">
                                         <div class="status-indicator"></div>
                                     </div>
@@ -164,7 +157,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_3.svg"
+                                        <img class="rounded-circle" src="{{ asset('backend/img/undraw_profile_3.svg')}}"
                                             alt="...">
                                         <div class="status-indicator bg-warning"></div>
                                     </div>
@@ -201,7 +194,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
                                 <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                    src="{{ asset('backend/img/undraw_profile.svg')}}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -230,17 +223,10 @@
                     </ul>
 
                 </nav>
-                <!-- End of Topbar -->
 
 
+            <!-- Main Content -->  
 
-
-
-
-
-
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
 
                  
                     @yield('content')
@@ -251,27 +237,10 @@
                 
                 <!-- /.container-fluid -->
 
-            </div>
+                @Yield('content')
+
+
             <!-- End of Main Content -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
@@ -315,10 +284,16 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
+
     <script src="{{asset('backend/vendor/jquery/jquery.min.js')}}"></script>
+
+    <script src="{{ asset('backend/vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{ asset('backend/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
 
     <script src="{{asset('backend/vendor/bootstrap/js/bootstrap.bundle.min.js')}} "></script>
     <!-- Core plugin JavaScript-->
+
     <script src="{{asset('backend/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
 
     <!-- Custom scripts for all pages-->
@@ -340,6 +315,24 @@
     $('#example').DataTable();
 });
 </script>
+
+    <script src="{{ asset('backend/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{{ asset('backend/js/sb-admin-2.min.js')}}"></script>
+
+    <!-- Page level plugins -->
+    <script src="{{ asset('backend/vendor/chart.js/Chart.min.js')}}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{{ asset('backend/js/demo/chart-area-demo.js')}}"></script>
+    <script src="{{ asset('backend/js/demo/chart-pie-demo.js')}}"></script>
+    <script type="text/javascript" src="http://localhost/web/vendor/ckeditor/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript">
+       CKEDITOR.replace('editor');
+    </script>
+    <script src="{{ asset('backend/js/main.js')}}"></script>
+
 </body>
 
 </html>
