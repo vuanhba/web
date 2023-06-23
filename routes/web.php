@@ -10,7 +10,7 @@ use App\Http\Controllers\Client\Auth\LoginController;
 use App\Http\Controllers\Client\Auth\ForgotPasswordController;
 use App\Http\Controllers\Admin\User\UsersController;
 
-use App\Http\Controllers\homecontroller;
+// use App\Http\Controllers\homecontroller;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandsController;
@@ -26,21 +26,25 @@ use App\Http\Controllers\BrandsController;
 |
 */
 Auth::routes();
+
+        // shop & product routes clients
+
+        Route::get('cart',[ClientController::class,'cart'])->name('cart');
+        Route::get('shop',[ClientController::class,'shop'])->name('shop');
+        Route::get('productDetail',[ClientController::class,'productDetail'])->name('productDetail');
+
+
 //start routes clients
 Route::get('/',[ClientController::class,'index'])->middleware('guest:account')->name('home');
+
+
 Route::prefix('clients')->name('clients.')->group(function () {
     
-
     Route::get('/',[ClientController::class,'index'])->middleware('auth:account')->name('home2');
-    
-
-    // Route::get('cart',[ClientController::class,'cart'])->name('cart');
      Route::get('login',[LoginController::class,'login'])->middleware('guest:account')->name('login');
      Route::post('login',[LoginController::class,'postLogin'])->middleware('guest:account')->name('postLogin');
      Route::get('forgot-password',[ForgotPasswordController::class,'forgotPassword'])->middleware('guest:account')->name('forgot-password');
-     
      Route::post('forgot-password',[ForgotPasswordController::class,'sendResetLinkEmail'])->middleware('guest:account')->name('LinkEmail');
-
      Route::post('logout',[LoginController::class,'logout'])->middleware('auth:account')->name('logout');
 
 

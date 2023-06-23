@@ -14,5 +14,13 @@ class ClientController extends Controller
         return view('page.client.cart');
 
     }
- 
+    public function shop(){
+        return view('page.client.shop');
+
+    }
+    public function productDetail(){
+        return view('page.client.productDetail');
+
+    }
+    
 }
